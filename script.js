@@ -1,120 +1,30 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+function checkURL() {
+  const url = document.getElementById("urlInput").value;
 
-body {
-  background: #0f172a;
-  color: white;
-  line-height: 1.6;
-}
+  const suspiciousWords = [
+    "free-money",
+    "verify-now",
+    "crypto-fast",
+    "login-free",
+    "gift-card",
+    "win-cash"
+  ];
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 10%;
-  background: #111827;
-}
+  let isSuspicious = false;
 
-.navbar ul {
-  display: flex;
-  list-style: none;
-  gap: 20px;
-}
+  suspiciousWords.forEach(word => {
+    if (url.includes(word)) {
+      isSuspicious = true;
+    }
+  });
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-}
+  const result = document.getElementById("result");
 
-.hero {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 40px;
-}
-
-.hero h2 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  max-width: 700px;
-  margin-bottom: 30px;
-}
-
-.scanner-box {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.scanner-box input {
-  padding: 14px;
-  width: 320px;
-  border: none;
-  border-radius: 8px;
-}
-
-.scanner-box button {
-  padding: 14px 20px;
-  border: none;
-  border-radius: 8px;
-  background: #2563eb;
-  color: white;
-  cursor: pointer;
-}
-
-.section {
-  padding: 70px 10%;
-}
-
-.section h2 {
-  margin-bottom: 20px;
-  font-size: 2rem;
-}
-
-.card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 20px;
-}
-
-#result {
-  margin-top: 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  background: #111827;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .scanner-box {
-    flex-direction: column;
-  }
-
-  .scanner-box input {
-    width: 100%;
-  }
-
-  .hero h2 {
-    font-size: 2rem;
+  if (isSuspicious) {
+    result.innerHTML = "⚠️ Suspicious Link Detected";
+    result.style.color = "red";
+  } else {
+    result.innerHTML = "✅ Link Appears Safe";
+    result.style.color = "lightgreen";
   }
 }
