@@ -1,12 +1,18 @@
+/* script.js */
+
 function checkURL() {
 
-  const url = document.getElementById("urlInput").value.trim();
+  const url =
+    document.getElementById("urlInput").value.trim();
 
-  const result = document.getElementById("result");
+  const result =
+    document.getElementById("result");
 
   if (url === "") {
 
-    result.innerHTML = "⚠️ Please enter a URL";
+    result.innerHTML =
+      "⚠️ Please enter a URL";
+
     result.style.color = "#facc15";
 
     return;
@@ -14,18 +20,15 @@ function checkURL() {
 
   let risk = 0;
 
-  // Convert to lowercase
-
   const lowerURL = url.toLowerCase();
 
-  // Suspicious keywords
+  // Suspicious words
 
   const suspiciousWords = [
 
     "free-money",
     "verify-now",
     "crypto-fast",
-    "login-free",
     "gift-card",
     "win-cash",
     "claim-reward",
@@ -34,10 +37,8 @@ function checkURL() {
     "bank-update",
     "freebtc",
     "airdrop",
-    "instant-profit",
     "double-your-btc",
     "password-reset",
-    "account-verify",
     "unlock-account"
 
   ];
@@ -80,8 +81,7 @@ function checkURL() {
     "bit.ly",
     "tinyurl",
     "goo.gl",
-    "t.co",
-    "shorturl"
+    "t.co"
 
   ];
 
@@ -93,29 +93,13 @@ function checkURL() {
 
   });
 
-  // HTTP instead of HTTPS
+  // HTTP
 
   if (lowerURL.startsWith("http://")) {
     risk += 1;
   }
 
-  // Too many numbers
-
-  const numbers = lowerURL.match(/\d/g);
-
-  if (numbers && numbers.length > 6) {
-    risk += 1;
-  }
-
-  // Too many hyphens
-
-  const hyphens = lowerURL.match(/-/g);
-
-  if (hyphens && hyphens.length > 4) {
-    risk += 1;
-  }
-
-  // IP address detection
+  // IP Address
 
   const ipPattern =
     /https?:\/\/(\d{1,3}\.){3}\d{1,3}/;
@@ -128,40 +112,19 @@ function checkURL() {
 
   if (
     lowerURL.includes("@") ||
-    lowerURL.includes("%") ||
-    lowerURL.includes("//")
+    lowerURL.includes("%")
   ) {
     risk += 1;
   }
 
-  // Fake brand checks
-
-  const fakeBrands = [
-
-    "paypaI",
-    "arnazon",
-    "faceb00k",
-    "micr0soft",
-    "goog1e"
-
-  ];
-
-  fakeBrands.forEach(brand => {
-
-    if (lowerURL.includes(brand.toLowerCase())) {
-      risk += 3;
-    }
-
-  });
-
-  // Final Detection
+  // Final Result
 
   if (risk >= 7) {
 
     result.innerHTML = `
       🚨 HIGH RISK SCAM DETECTED
       <br>
-      This website appears extremely dangerous.
+      Dangerous website detected.
     `;
 
     result.style.color = "#ef4444";
@@ -173,7 +136,7 @@ function checkURL() {
     result.innerHTML = `
       ⚠️ Suspicious Website
       <br>
-      Proceed carefully and avoid sensitive information.
+      Proceed carefully.
     `;
 
     result.style.color = "#f59e0b";
@@ -183,9 +146,9 @@ function checkURL() {
   else {
 
     result.innerHTML = `
-      ✅ Link Appears Relatively Safe
+      ✅ Link Appears Safe
       <br>
-      No major phishing patterns detected.
+      No major phishing patterns found.
     `;
 
     result.style.color = "#22c55e";
