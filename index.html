@@ -1,269 +1,158 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>MercX Shield</title>
+<title>MercX Shield</title>
 
-  <!-- SEO -->
-  <meta name="description" content="MercX Shield protects users from phishing links, scam websites, and online fraud." />
-
-  <!-- Google Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V73RMEFQCJ"></script>
-
-  <script>
-    window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
-    gtag('js', new Date());
-
-    gtag('config', 'G-V73RMEFQCJ');
-  </script>
-
-  <!-- Adsense -->
-  <meta name="google-adsense-account" content="ca-pub-2860475201581700">
-
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2860475201581700"
-    crossorigin="anonymous">
-  </script>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css" />
 
 </head>
 
-<body id="top">
+<body>
 
-  <!-- NAVBAR -->
+<nav class="navbar">
 
-  <nav class="navbar">
+<h1>MercX Shield</h1>
 
-    <h1 class="logo">MercX Shield</h1>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#features">Features</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#blog">Blog</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
-    <ul class="nav-links">
+</nav>
 
-      <li><a href="#top">Home</a></li>
+<section class="hero">
 
-      <li><a href="#features">Features</a></li>
+<div class="badge">
+AI Cybersecurity Protection
+</div>
 
-      <li><a href="#about">About</a></li>
+<h2>
+Protect Yourself From Online Scams
+</h2>
 
-      <li><a href="#blog">Blog</a></li>
+<p>
+Detect phishing websites, fake investment links,
+suspicious domains, and online fraud instantly.
+</p>
 
-      <li><a href="#contact">Contact</a></li>
+<div class="scanner-box">
 
-    </ul>
+<input
+type="text"
+id="urlInput"
+placeholder="Paste suspicious URL here..."
+>
 
-  </nav>
+<button onclick="checkURL()">
+Scan Link
+</button>
 
-  <!-- HERO -->
+</div>
 
-  <section class="hero">
+<div id="result"></div>
 
-    <div class="hero-content">
+</section>
 
-      <span class="badge">
-        AI Cybersecurity Protection
-      </span>
+<section id="features" class="section">
 
-      <h2>
-        Protect Yourself From Online Scams
-      </h2>
+<h2>Security Features</h2>
 
-      <p>
-        Detect phishing websites, fake investment links,
-        suspicious domains, and online fraud instantly.
-      </p>
+<div class="card-grid">
 
-      <div class="scanner-box">
+<div class="card">
+<h3>Phishing Detection</h3>
+<p>
+Detect fake login pages and phishing attacks instantly.
+</p>
+</div>
 
-        <input
-          type="text"
-          id="urlInput"
-          placeholder="Paste suspicious URL here..."
-        />
+<div class="card">
+<h3>Short Link Scanner</h3>
+<p>
+Identify dangerous shortened URLs and hidden redirects.
+</p>
+</div>
 
-        <button onclick="checkURL()">
-          Scan Link
-        </button>
+<div class="card">
+<h3>Domain Risk Analysis</h3>
+<p>
+Analyze suspicious domain extensions and scam patterns.
+</p>
+</div>
 
-      </div>
+</div>
 
-      <div id="result"></div>
+</section>
 
-    </div>
+<section id="about" class="section">
 
-  </section>
+<h2>About MercX Shield</h2>
 
-  <!-- FEATURES -->
+<p>
+MercX Shield is a cybersecurity awareness platform focused
+on helping people avoid scams, phishing attacks,
+fake websites, and dangerous online fraud.
+</p>
 
-  <section id="features" class="section">
+</section>
 
-    <h2 class="section-title">
-      Features
-    </h2>
+<section id="blog" class="section">
 
-    <div class="grid">
+<h2>Latest Security Articles</h2>
 
-      <div class="card">
+<div class="card-grid">
 
-        <h3>🛡️ Phishing Detection</h3>
+<div class="card">
+<h3>How To Detect Fake Websites</h3>
+<p>
+Learn how scammers imitate real websites using fake domains.
+</p>
+</div>
 
-        <p>
-          Detect phishing websites and fake login pages.
-        </p>
+<div class="card">
+<h3>Crypto Scam Warning Signs</h3>
+<p>
+Understand common fake investment and giveaway scams.
+</p>
+</div>
 
-      </div>
+<div class="card">
+<h3>Protect Your Accounts</h3>
+<p>
+Enable 2FA and avoid suspicious login requests online.
+</p>
+</div>
 
-      <div class="card">
+</div>
 
-        <h3>⚡ Instant Scan</h3>
+</section>
 
-        <p>
-          Get fast scam analysis instantly.
-        </p>
+<section id="contact" class="section">
 
-      </div>
+<h2>Contact</h2>
 
-      <div class="card">
+<p>Email: support@mercx.site</p>
+<p>Business: business@mercx.site</p>
 
-        <h3>🔒 Cyber Awareness</h3>
+</section>
 
-        <p>
-          Learn how hackers and scammers attack users online.
-        </p>
+<footer>
 
-      </div>
+<p>
+© 2026 MercX Shield — Cybersecurity Protection Platform
+</p>
 
-    </div>
+</footer>
 
-  </section>
-
-  <!-- ADS -->
-
-  <div class="ads-container">
-
-    <ins class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-2860475201581700"
-      data-ad-slot="1234567890"
-      data-ad-format="auto"
-      data-full-width-responsive="true">
-    </ins>
-
-    <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-
-  </div>
-
-  <!-- ABOUT -->
-
-  <section id="about" class="section">
-
-    <h2 class="section-title">
-      About Us
-    </h2>
-
-    <p>
-      MercX Shield is a cybersecurity platform focused on
-      protecting internet users from phishing attacks,
-      fake websites, scam links, and online fraud.
-    </p>
-
-  </section>
-
-  <!-- BLOG -->
-
-  <section id="blog" class="section">
-
-    <h2 class="section-title">
-      Latest Security Posts
-    </h2>
-
-    <div class="grid">
-
-      <div class="card">
-
-        <h3>How To Detect Fake Websites</h3>
-
-        <p>
-          Learn the warning signs used by scam websites.
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>Common Crypto Scams</h3>
-
-        <p>
-          Discover how fake investment platforms trick users.
-        </p>
-
-      </div>
-
-      <div class="card">
-
-        <h3>What Is Phishing?</h3>
-
-        <p>
-          Understand how attackers steal passwords and data.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section id="contact" class="section">
-
-    <h2 class="section-title">
-      Contact
-    </h2>
-
-    <p>📧 support@mercx.site</p>
-
-    <p>💼 business@mercx.site</p>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <h3>MercX Shield</h3>
-
-    <p>
-      AI-powered scam protection platform.
-    </p>
-
-    <p class="copyright">
-      © 2026 MercX Shield
-    </p>
-
-  </footer>
-
-  <!-- JS -->
-  <script src="script.js"></script>
+<script src="script.js?v=5"></script>
 
 </body>
 </html>
