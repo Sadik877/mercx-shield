@@ -4,8 +4,6 @@ function checkURL() {
 
   const result = document.getElementById("result");
 
-  // Empty Input
-
   if (url === "") {
 
     result.innerHTML = "⚠️ Please enter a URL";
@@ -14,7 +12,13 @@ function checkURL() {
     return;
   }
 
-  // Dangerous Keywords
+  let risk = 0;
+
+  // Convert to lowercase
+
+  const lowerURL = url.toLowerCase();
+
+  // Suspicious keywords
 
   const suspiciousWords = [
 
@@ -24,91 +28,152 @@ function checkURL() {
     "login-free",
     "gift-card",
     "win-cash",
-    "bonus-now",
     "claim-reward",
-    "airdrop-free",
-    "double-your-btc",
-    "instant-profit",
-    "freebtc",
+    "bonus-now",
     "wallet-verify",
     "bank-update",
-    "free-crypto",
-    "investment-fast"
+    "freebtc",
+    "airdrop",
+    "instant-profit",
+    "double-your-btc",
+    "password-reset",
+    "account-verify",
+    "unlock-account"
 
   ];
 
-  let risk = 0;
-
-  // Check Suspicious Keywords
-
   suspiciousWords.forEach(word => {
 
-    if (url.toLowerCase().includes(word)) {
+    if (lowerURL.includes(word)) {
       risk += 2;
     }
 
   });
 
-  // HTTP check
+  // Dangerous domains
 
-  if (url.startsWith("http://")) {
-    risk += 1;
-  }
+  const riskyDomains = [
 
-  // Too many numbers check
-
-  const numbers = url.match(/\d+/g);
-
-  if (numbers && numbers.length > 3) {
-    risk += 1;
-  }
-
-  // Fake domain patterns
-
-  const fakeDomains = [
-
-    ".xyz",
     ".tk",
+    ".xyz",
     ".gq",
+    ".cf",
     ".ml",
-    ".cf"
+    ".top",
+    ".buzz",
+    ".click"
 
   ];
 
-  fakeDomains.forEach(domain => {
+  riskyDomains.forEach(domain => {
 
-    if (url.includes(domain)) {
-      risk += 1;
+    if (lowerURL.includes(domain)) {
+      risk += 2;
     }
 
   });
 
-  // Suspicious symbols
+  // URL shorteners
 
-  if (url.includes("@") || url.includes("%")) {
+  const shorteners = [
+
+    "bit.ly",
+    "tinyurl",
+    "goo.gl",
+    "t.co",
+    "shorturl"
+
+  ];
+
+  shorteners.forEach(shortener => {
+
+    if (lowerURL.includes(shortener)) {
+      risk += 2;
+    }
+
+  });
+
+  // HTTP instead of HTTPS
+
+  if (lowerURL.startsWith("http://")) {
     risk += 1;
   }
 
-  // Final Analysis
+  // Too many numbers
 
-  if (risk >= 4) {
+  const numbers = lowerURL.match(/\d/g);
+
+  if (numbers && numbers.length > 6) {
+    risk += 1;
+  }
+
+  // Too many hyphens
+
+  const hyphens = lowerURL.match(/-/g);
+
+  if (hyphens && hyphens.length > 4) {
+    risk += 1;
+  }
+
+  // IP address detection
+
+  const ipPattern =
+    /https?:\/\/(\d{1,3}\.){3}\d{1,3}/;
+
+  if (ipPattern.test(lowerURL)) {
+    risk += 3;
+  }
+
+  // Suspicious symbols
+
+  if (
+    lowerURL.includes("@") ||
+    lowerURL.includes("%") ||
+    lowerURL.includes("//")
+  ) {
+    risk += 1;
+  }
+
+  // Fake brand checks
+
+  const fakeBrands = [
+
+    "paypaI",
+    "arnazon",
+    "faceb00k",
+    "micr0soft",
+    "goog1e"
+
+  ];
+
+  fakeBrands.forEach(brand => {
+
+    if (lowerURL.includes(brand.toLowerCase())) {
+      risk += 3;
+    }
+
+  });
+
+  // Final Detection
+
+  if (risk >= 7) {
 
     result.innerHTML = `
-      🚨 Dangerous Website Detected
+      🚨 HIGH RISK SCAM DETECTED
       <br>
-      High scam probability.
+      This website appears extremely dangerous.
     `;
 
     result.style.color = "#ef4444";
 
   }
 
-  else if (risk >= 2) {
+  else if (risk >= 4) {
 
     result.innerHTML = `
-      ⚠️ Suspicious Link
+      ⚠️ Suspicious Website
       <br>
-      Proceed carefully.
+      Proceed carefully and avoid sensitive information.
     `;
 
     result.style.color = "#f59e0b";
@@ -118,9 +183,9 @@ function checkURL() {
   else {
 
     result.innerHTML = `
-      ✅ Link Appears Safe
+      ✅ Link Appears Relatively Safe
       <br>
-      No major threats detected.
+      No major phishing patterns detected.
     `;
 
     result.style.color = "#22c55e";
@@ -128,29 +193,3 @@ function checkURL() {
   }
 
 }
-
-// Smooth Navbar Scroll
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-
-  anchor.addEventListener("click", function(e) {
-
-    e.preventDefault();
-
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-
-      behavior: "smooth"
-
-    });
-
-  });
-
-});
-
-// Small Fade Animation
-
-window.addEventListener("load", () => {
-
-  document.body.classList.add("loaded");
-
-});
