@@ -1,160 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Client Dashboard</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/auth.css">
 
   <style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    body{
-      font-family:'Space Grotesk',sans-serif;
-      background:#070B14;
-      color:white;
-      display:flex;
-    }
-
-    .sidebar{
-      width:260px;
-      background:#111827;
-      min-height:100vh;
-      padding:30px;
-      border-right:1px solid rgba(255,255,255,0.05);
-    }
-
-    .logo{
-      font-size:28px;
-      font-weight:bold;
-      margin-bottom:50px;
-    }
-
-    .logo span{
-      color:#FF6B00;
-    }
-
-    .menu a{
-      display:block;
-      color:#CBD5E1;
-      text-decoration:none;
-      padding:16px;
-      border-radius:14px;
-      margin-bottom:10px;
-      transition:0.3s;
-    }
-
-    .menu a:hover{
-      background:#1F2937;
-      color:white;
-    }
-
-    .main{
-      flex:1;
-      padding:40px;
-    }
-
-    .top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:40px;
-    }
-
-    .top button{
-      background:#FF6B00;
-      border:none;
-      color:white;
-      padding:14px 24px;
-      border-radius:14px;
-      cursor:pointer;
+    .dashboard{
+      width:100%;
+      max-width:1200px;
+      margin:auto;
     }
 
     .cards{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
       gap:20px;
+      margin-top:30px;
     }
 
     .card{
       background:#111827;
       padding:30px;
       border-radius:24px;
-      border:1px solid rgba(255,255,255,0.05);
-    }
-
-    .card p{
-      color:#94A3B8;
-      margin-top:10px;
-    }
-
-    .shipments{
-      margin-top:40px;
-      background:#111827;
-      border-radius:24px;
-      padding:30px;
-    }
-
-    table{
-      width:100%;
-      margin-top:20px;
-      border-collapse:collapse;
-    }
-
-    td,th{
-      padding:16px;
-      text-align:left;
-      border-bottom:1px solid rgba(255,255,255,0.05);
-    }
-
-    .status{
-      color:#00ff99;
     }
 
   </style>
-
 </head>
 <body>
 
-  <div class="sidebar">
+  <div class="dashboard">
 
-    <div class="logo">
-      MercX <span>Logistics</span>
-    </div>
-
-    <div class="menu">
-      <a href="#">Dashboard</a>
-      <a href="#">Create Shipment</a>
-      <a href="#">Track Shipment</a>
-      <a href="#">Payments</a>
-      <a href="#">Settings</a>
-      <a href="../index.html">Logout</a>
-    </div>
-
-  </div>
-
-  <div class="main">
-
-    <div class="top">
-
-      <div>
-        <h1>Client Dashboard</h1>
-        <p style="color:#94A3B8;">
-          Welcome back, Sadik 👋
-        </p>
-      </div>
-
-      <button>
-        + New Shipment
-      </button>
-
-    </div>
+    <h1>Client Dashboard</h1>
 
     <div class="cards">
 
@@ -175,35 +55,7 @@
 
     </div>
 
-    <div class="shipments">
-
-      <h2>Recent Shipments</h2>
-
-      <table>
-
-        <tr>
-          <th>Tracking ID</th>
-          <th>Status</th>
-          <th>Destination</th>
-        </tr>
-
-        <tr>
-          <td>MRX-458932</td>
-          <td class="status">In Transit</td>
-          <td>Abuja</td>
-        </tr>
-
-        <tr>
-          <td>MRX-993221</td>
-          <td class="status">Delivered</td>
-          <td>Lagos</td>
-        </tr>
-
-      </table>
-
-    </div>
-
   </div>
 
 </body>
-  </html>
+</html>
