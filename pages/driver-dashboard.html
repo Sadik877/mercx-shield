@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Driver Dashboard</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Space Grotesk',sans-serif;
+      background:#070B14;
+      color:white;
+      display:flex;
+    }
+
+    .sidebar{
+      width:260px;
+      background:#111827;
+      min-height:100vh;
+      padding:30px;
+      border-right:1px solid rgba(255,255,255,0.05);
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:bold;
+      margin-bottom:50px;
+    }
+
+    .logo span{
+      color:#FF6B00;
+    }
+
+    .menu a{
+      display:block;
+      color:#CBD5E1;
+      text-decoration:none;
+      padding:16px;
+      border-radius:14px;
+      margin-bottom:10px;
+      transition:0.3s;
+    }
+
+    .menu a:hover{
+      background:#1F2937;
+      color:white;
+    }
+
+    .main{
+      flex:1;
+      padding:40px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+
+    .card{
+      background:#111827;
+      padding:30px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .card p{
+      color:#94A3B8;
+      margin-top:10px;
+    }
+
+    .jobs{
+      margin-top:40px;
+      background:#111827;
+      border-radius:24px;
+      padding:30px;
+    }
+
+    .job{
+      padding:20px;
+      background:#1F2937;
+      border-radius:18px;
+      margin-top:20px;
+    }
+
+    .job button{
+      margin-top:15px;
+      background:#FF6B00;
+      border:none;
+      padding:12px 20px;
+      border-radius:12px;
+      color:white;
+      cursor:pointer;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="sidebar">
+
+    <div class="logo">
+      MercX <span>Logistics</span>
+    </div>
+
+    <div class="menu">
+      <a href="#">Dashboard</a>
+      <a href="#">Available Jobs</a>
+      <a href="#">My Deliveries</a>
+      <a href="#">Wallet</a>
+      <a href="#">Settings</a>
+      <a href="../index.html">Logout</a>
+    </div>
+
+  </div>
+
+  <div class="main">
+
+    <h1>Driver Dashboard</h1>
+
+    <p style="margin-top:10px; color:#94A3B8;">
+      Welcome back, Driver 👋
+    </p>
+
+    <div class="cards" style="margin-top:40px;">
+
+      <div class="card">
+        <h2>₦45,000</h2>
+        <p>Today's Earnings</p>
+      </div>
+
+      <div class="card">
+        <h2>18</h2>
+        <p>Completed Deliveries</p>
+      </div>
+
+      <div class="card">
+        <h2>4.9 ★</h2>
+        <p>Driver Rating</p>
+      </div>
+
+    </div>
+
+    <div class="jobs">
+
+      <h2>Available Delivery Jobs</h2>
+
+      <div class="job">
+
+        <h3>Lagos → Abuja</h3>
+
+        <p style="margin-top:10px; color:#94A3B8;">
+          Electronics package • ₦25,000
+        </p>
+
+        <button>
+          Accept Job
+        </button>
+
+      </div>
+
+      <div class="job">
+
+        <h3>Kano → Kaduna</h3>
+
+        <p style="margin-top:10px; color:#94A3B8;">
+          Food delivery • ₦15,000
+        </p>
+
+        <button>
+          Accept Job
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
