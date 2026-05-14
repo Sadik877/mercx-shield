@@ -1,158 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-<title>MercX Shield</title>
-
-<link rel="stylesheet" href="style.css" />
-
+  <title>Delivery App</title>
 </head>
-
 <body>
+  <h1>Signup / Login</h1>
+  <form id="signupForm">
+    <input type="text" id="name" placeholder="Name" required>
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Signup</button>
+  </form>
 
-<nav class="navbar">
-
-<h1>MercX Shield</h1>
-
-<ul>
-<li><a href="#">Home</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#blog">Blog</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-
-</nav>
-
-<section class="hero">
-
-<div class="badge">
-AI Cybersecurity Protection
-</div>
-
-<h2>
-Protect Yourself From Online Scams
-</h2>
-
-<p>
-Detect phishing websites, fake investment links,
-suspicious domains, and online fraud instantly.
-</p>
-
-<div class="scanner-box">
-
-<input
-type="text"
-id="urlInput"
-placeholder="Paste suspicious URL here..."
->
-
-<button onclick="checkURL()">
-Scan Link
-</button>
-
-</div>
-
-<div id="result"></div>
-
-</section>
-
-<section id="features" class="section">
-
-<h2>Security Features</h2>
-
-<div class="card-grid">
-
-<div class="card">
-<h3>Phishing Detection</h3>
-<p>
-Detect fake login pages and phishing attacks instantly.
-</p>
-</div>
-
-<div class="card">
-<h3>Short Link Scanner</h3>
-<p>
-Identify dangerous shortened URLs and hidden redirects.
-</p>
-</div>
-
-<div class="card">
-<h3>Domain Risk Analysis</h3>
-<p>
-Analyze suspicious domain extensions and scam patterns.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="about" class="section">
-
-<h2>About MercX Shield</h2>
-
-<p>
-MercX Shield is a cybersecurity awareness platform focused
-on helping people avoid scams, phishing attacks,
-fake websites, and dangerous online fraud.
-</p>
-
-</section>
-
-<section id="blog" class="section">
-
-<h2>Latest Security Articles</h2>
-
-<div class="card-grid">
-
-<div class="card">
-<h3>How To Detect Fake Websites</h3>
-<p>
-Learn how scammers imitate real websites using fake domains.
-</p>
-</div>
-
-<div class="card">
-<h3>Crypto Scam Warning Signs</h3>
-<p>
-Understand common fake investment and giveaway scams.
-</p>
-</div>
-
-<div class="card">
-<h3>Protect Your Accounts</h3>
-<p>
-Enable 2FA and avoid suspicious login requests online.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="contact" class="section">
-
-<h2>Contact</h2>
-
-<p>Email: support@mercx.site</p>
-<p>Business: business@mercx.site</p>
-
-</section>
-
-<footer>
-
-<p>
-© 2026 MercX Shield — Cybersecurity Protection Platform
-</p>
-
-</footer>
-
-<script src="script.js?v=5"></script>
-
+  <script src="js/auth.js"></script>
 </body>
 </html>
