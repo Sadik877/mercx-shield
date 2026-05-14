@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MercX Tracking</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Space Grotesk',sans-serif;
+      background:#070B14;
+      color:white;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:30px;
+    }
+
+    .tracking-container{
+      width:100%;
+      max-width:700px;
+      background:#111827;
+      border-radius:30px;
+      padding:40px;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    h1{
+      font-size:42px;
+      margin-bottom:10px;
+    }
+
+    p{
+      color:#94A3B8;
+      margin-bottom:30px;
+    }
+
+    .tracking-box{
+      display:flex;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    input{
+      flex:1;
+      min-width:230px;
+      padding:18px;
+      border:none;
+      border-radius:16px;
+      background:#1F2937;
+      color:white;
+      outline:none;
+    }
+
+    button{
+      padding:18px 30px;
+      border:none;
+      border-radius:16px;
+      background:#FF6B00;
+      color:white;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    .result{
+      margin-top:35px;
+      background:#0F172A;
+      border-radius:20px;
+      padding:30px;
+      display:none;
+    }
+
+    .status{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(0,255,128,0.15);
+      color:#00ff99;
+      margin-bottom:20px;
+    }
+
+    .progress{
+      width:100%;
+      height:12px;
+      background:#1E293B;
+      border-radius:999px;
+      overflow:hidden;
+      margin-top:20px;
+    }
+
+    .progress span{
+      display:block;
+      width:80%;
+      height:100%;
+      background:linear-gradient(to right,#FF6B00,#ff9432);
+    }
+
+    .back{
+      display:inline-block;
+      margin-top:30px;
+      color:#FF6B00;
+      text-decoration:none;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <div class="tracking-container">
+
+    <h1>Track Shipment</h1>
+
+    <p>
+      Enter your shipment tracking ID below.
+    </p>
+
+    <div class="tracking-box">
+
+      <input type="text" id="trackingInput" placeholder="MRX-458932-NG">
+
+      <button onclick="trackShipment()">
+        Track Now
+      </button>
+
+    </div>
+
+    <div class="result" id="result">
+
+      <div class="status">
+        In Transit
+      </div>
+
+      <h2>Shipment Found</h2>
+
+      <p style="margin-top:15px;">
+        Your shipment is currently on the way to Abuja.
+      </p>
+
+      <div class="progress">
+        <span></span>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; margin-top:15px; color:#94A3B8;">
+        <small>Pickup</small>
+        <small>Transit</small>
+        <small>Delivered</small>
+      </div>
+
+    </div>
+
+    <a href="../index.html" class="back">
+      ← Back Home
+    </a>
+
+  </div>
+
+  <script>
+
+    function trackShipment(){
+
+      const input = document.getElementById('trackingInput').value;
+      const result = document.getElementById('result');
+
+      if(input.trim() === ''){
+        alert('Please enter tracking ID');
+        return;
+      }
+
+      result.style.display = 'block';
+
+    }
+
+  </script>
+
+</body>
+</html>
