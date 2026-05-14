@@ -5,70 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MercX Login</title>
 
-  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="../css/auth.css">
 </head>
 <body>
 
-  <div class="container">
+  <div class="auth-container">
 
-    <div class="left">
+    <form class="auth-form">
 
-      <div class="overlay"></div>
+      <h1>Login</h1>
 
-      <div class="content">
-        <h1>MercX Logistics</h1>
+      <input type="email" placeholder="Email">
+      <input type="password" placeholder="Password">
 
-        <p>
-          Smart logistics marketplace connecting clients with trusted drivers.
-        </p>
-      </div>
+      <button type="submit">Login</button>
 
-    </div>
+      <p>
+        Don't have account?
+        <a href="register.html">Register</a>
+      </p>
 
-    <div class="right">
-
-      <form class="form">
-
-        <h2>Welcome Back</h2>
-
-        <p class="sub">
-          Login to continue
-        </p>
-
-        <div class="input-group">
-          <label>Email</label>
-
-          <input type="email" placeholder="Enter email">
-        </div>
-
-        <div class="input-group">
-          <label>Password</label>
-
-          <div class="password-box">
-            <input type="password" id="password" placeholder="Enter password">
-
-            <button type="button" onclick="togglePassword()">
-              👁
-            </button>
-          </div>
-        </div>
-
-        <button class="submit-btn">
-          Login
-        </button>
-
-        <p class="switch">
-          Don't have an account?
-          <a href="register.html">Register</a>
-        </p>
-
-      </form>
-
-    </div>
+    </form>
 
   </div>
-
-  <script src="auth.js"></script>
 
 </body>
 </html>
