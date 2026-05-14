@@ -1,0 +1,137 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial;
+  background:#070B14;
+  color:white;
+}
+
+.container{
+  display:flex;
+  min-height:100vh;
+}
+
+.left{
+  flex:1;
+  position:relative;
+  background:url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1974&auto=format&fit=crop') center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+}
+
+.content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:40px;
+}
+
+.content h1{
+  font-size:55px;
+  margin-bottom:20px;
+}
+
+.content p{
+  color:#CBD5E1;
+  max-width:450px;
+}
+
+.right{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+}
+
+.form{
+  width:100%;
+  max-width:450px;
+}
+
+.form h2{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.sub{
+  color:#94A3B8;
+  margin-bottom:35px;
+}
+
+.input-group{
+  margin-bottom:22px;
+}
+
+.input-group label{
+  display:block;
+  margin-bottom:10px;
+}
+
+.input-group input,
+.input-group select{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  background:#111827;
+  color:white;
+  outline:none;
+}
+
+.password-box{
+  position:relative;
+}
+
+.password-box button{
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+  background:none;
+  border:none;
+  color:white;
+  cursor:pointer;
+}
+
+.submit-btn{
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:14px;
+  background:#FF6B00;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.switch{
+  margin-top:25px;
+  color:#94A3B8;
+  text-align:center;
+}
+
+.switch a{
+  color:#FF6B00;
+  text-decoration:none;
+}
+
+@media(max-width:900px){
+
+  .left{
+    display:none;
+  }
+
+  }
