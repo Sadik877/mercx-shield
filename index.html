@@ -10,490 +10,14 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    :root{
-      --bg:#070b14;
-      --card:#111827;
-      --card2:#0f172a;
-      --primary:#ff6b00;
-      --text:#ffffff;
-      --muted:#94a3b8;
-      --border:rgba(255,255,255,0.08);
-    }
-
-    body{
-      font-family:'Space Grotesk',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-      opacity:0;
-      transition:0.5s ease;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    .container{
-      width:90%;
-      max-width:1300px;
-      margin:auto;
-    }
-
-    .blur{
-      position:absolute;
-      width:400px;
-      height:400px;
-      border-radius:50%;
-      background:rgba(255,107,0,0.18);
-      filter:blur(120px);
-      z-index:-1;
-    }
-
-    .blur.one{
-      top:-120px;
-      left:-100px;
-    }
-
-    .blur.two{
-      right:-100px;
-      top:400px;
-    }
-
-    nav{
-      position:fixed;
-      width:100%;
-      top:0;
-      left:0;
-      z-index:999;
-      backdrop-filter:blur(18px);
-      background:rgba(7,11,20,0.7);
-      border-bottom:1px solid var(--border);
-    }
-
-    .nav-wrapper{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:20px 0;
-    }
-
-    .logo{
-      font-size:1.7rem;
-      font-weight:700;
-    }
-
-    .logo span{
-      color:var(--primary);
-    }
-
-    .nav-links{
-      display:flex;
-      gap:30px;
-      list-style:none;
-    }
-
-    .nav-links a{
-      color:var(--text);
-      text-decoration:none;
-      transition:0.3s;
-      font-weight:500;
-    }
-
-    .nav-links a:hover{
-      color:var(--primary);
-    }
-
-    .nav-btn{
-      background:var(--primary);
-      color:white;
-      padding:12px 24px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:600;
-    }
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .hero-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:60px;
-      align-items:center;
-    }
-
-    .hero-tag{
-      display:inline-block;
-      padding:10px 18px;
-      border:1px solid rgba(255,255,255,0.1);
-      background:rgba(255,255,255,0.03);
-      border-radius:999px;
-      color:var(--primary);
-      margin-bottom:25px;
-      font-size:0.9rem;
-    }
-
-    .hero h1{
-      font-size:5rem;
-      line-height:1.05;
-      margin-bottom:25px;
-    }
-
-    .hero h1 span{
-      color:var(--primary);
-    }
-
-    .hero p{
-      color:var(--muted);
-      line-height:1.8;
-      font-size:1.05rem;
-    }
-
-    .hero-buttons{
-      margin-top:40px;
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .primary-btn,
-    .secondary-btn{
-      padding:16px 28px;
-      border-radius:16px;
-      text-decoration:none;
-      font-weight:600;
-      transition:0.3s ease;
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-    }
-
-    .primary-btn{
-      background:var(--primary);
-      color:white;
-    }
-
-    .primary-btn:hover{
-      transform:translateY(-4px);
-      box-shadow:0 10px 40px rgba(255,107,0,0.35);
-    }
-
-    .secondary-btn{
-      border:1px solid rgba(255,255,255,0.1);
-      color:white;
-      background:rgba(255,255,255,0.03);
-    }
-
-    .hero-card{
-      background:linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.08);
-      padding:35px;
-      border-radius:30px;
-      backdrop-filter:blur(20px);
-    }
-
-    .card-header{
-      display:flex;
-      justify-content:space-between;
-      margin-bottom:25px;
-    }
-
-    .status{
-      padding:8px 14px;
-      border-radius:999px;
-      background:rgba(0,255,128,0.15);
-      color:#00ff99;
-      font-size:0.8rem;
-    }
-
-    .tracking-box{
-      background:rgba(255,255,255,0.03);
-      padding:20px;
-      border-radius:20px;
-      margin-top:20px;
-      border:1px solid rgba(255,255,255,0.05);
-    }
-
-    .progress{
-      width:100%;
-      height:12px;
-      background:rgba(255,255,255,0.05);
-      border-radius:999px;
-      overflow:hidden;
-      margin-top:18px;
-    }
-
-    .progress span{
-      display:block;
-      width:78%;
-      height:100%;
-      background:linear-gradient(to right,#ff6b00,#ff9a3d);
-      border-radius:999px;
-    }
-
-    section{
-      padding:120px 0;
-    }
-
-    .section-title{
-      text-align:center;
-      margin-bottom:70px;
-    }
-
-    .section-title span{
-      color:var(--primary);
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-size:0.9rem;
-    }
-
-    .section-title h2{
-      font-size:3rem;
-      margin-top:15px;
-    }
-
-    .section-title p{
-      max-width:700px;
-      margin:20px auto 0;
-      color:var(--muted);
-      line-height:1.7;
-    }
-
-    .services-grid,
-    .steps,
-    .testimonials{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:25px;
-    }
-
-    .service-card,
-    .step-card,
-    .testimonial{
-      background:var(--card);
-      border:1px solid rgba(255,255,255,0.05);
-      padding:35px;
-      border-radius:24px;
-      transition:0.4s ease;
-    }
-
-    .service-card:hover{
-      transform:translateY(-10px);
-      border-color:rgba(255,107,0,0.3);
-    }
-
-    .service-icon{
-      width:70px;
-      height:70px;
-      border-radius:18px;
-      background:rgba(255,107,0,0.12);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:2rem;
-      margin-bottom:25px;
-    }
-
-    .service-card p,
-    .step-card p,
-    .testimonial p{
-      color:var(--muted);
-      line-height:1.7;
-      margin-top:15px;
-    }
-
-    .step-number{
-      width:60px;
-      height:60px;
-      border-radius:50%;
-      background:var(--primary);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:bold;
-      margin-bottom:20px;
-    }
-
-    .driver-cta{
-      background:linear-gradient(135deg,#111827,#1e293b);
-      border-radius:40px;
-      padding:70px;
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:50px;
-      align-items:center;
-      border:1px solid rgba(255,255,255,0.06);
-    }
-
-    .driver-cta h2{
-      font-size:3rem;
-      margin:20px 0;
-    }
-
-    .driver-cta p{
-      color:var(--muted);
-      line-height:1.8;
-    }
-
-    .earnings-card{
-      background:rgba(255,255,255,0.04);
-      border-radius:28px;
-      padding:35px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .earning-item{
-      display:flex;
-      justify-content:space-between;
-      padding:16px 0;
-      border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-
-    .tracking-wrapper{
-      max-width:850px;
-      margin:auto;
-      background:var(--card);
-      padding:45px;
-      border-radius:30px;
-      border:1px solid rgba(255,255,255,0.06);
-    }
-
-    .tracking-form{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .tracking-form input{
-      flex:1;
-      min-width:240px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-      padding:18px;
-      border-radius:16px;
-      color:white;
-      outline:none;
-      font-size:1rem;
-    }
-
-    .tracking-result{
-      margin-top:30px;
-      padding:25px;
-      border-radius:20px;
-      background:rgba(255,255,255,0.03);
-      display:none;
-    }
-
-    .user{
-      display:flex;
-      align-items:center;
-      gap:15px;
-      margin-top:20px;
-    }
-
-    .avatar{
-      width:50px;
-      height:50px;
-      border-radius:50%;
-      background:var(--primary);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:bold;
-    }
-
-    footer{
-      padding:80px 0 30px;
-      border-top:1px solid rgba(255,255,255,0.06);
-    }
-
-    .footer-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:40px;
-      margin-bottom:50px;
-    }
-
-    .footer-grid p,
-    .footer-grid a{
-      color:var(--muted);
-      text-decoration:none;
-      line-height:2;
-    }
-
-    .copyright{
-      text-align:center;
-      color:var(--muted);
-      padding-top:30px;
-      border-top:1px solid rgba(255,255,255,0.06);
-    }
-
-    @media(max-width:1000px){
-
-      .hero-grid,
-      .driver-cta{
-        grid-template-columns:1fr;
-      }
-
-      .hero{
-        padding-top:140px;
-      }
-
-      .hero h1{
-        font-size:3.5rem;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-    }
-
-    @media(max-width:600px){
-
-      .hero h1{
-        font-size:2.7rem;
-      }
-
-      .section-title h2,
-      .driver-cta h2{
-        font-size:2.2rem;
-      }
-
-      .driver-cta,
-      .tracking-wrapper{
-        padding:35px 25px;
-      }
-
-      .hero-buttons{
-        flex-direction:column;
-      }
-
-    }
-
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
   <div class="blur one"></div>
   <div class="blur two"></div>
 
   <nav>
-
     <div class="container nav-wrapper">
 
       <div class="logo">
@@ -514,7 +38,6 @@
       </a>
 
     </div>
-
   </nav>
 
   <section class="hero" id="home">
@@ -555,29 +78,20 @@
 
           <div>
             <h3>Shipment Tracking</h3>
-            <p style="color:#94a3b8; margin-top:8px;">
-              Live delivery monitoring
-            </p>
+            <p class="muted">Live delivery monitoring</p>
           </div>
 
-          <div class="status">
-            ACTIVE
-          </div>
+          <div class="status">ACTIVE</div>
 
         </div>
 
         <div class="tracking-box">
-
           <h3>Tracking ID</h3>
-
-          <p style="color:#94a3b8;">
-            #MRX-458932-NG
-          </p>
+          <p class="muted">#MRX-458932-NG</p>
 
           <div class="progress">
             <span></span>
           </div>
-
         </div>
 
       </div>
@@ -592,12 +106,7 @@
 
       <div class="section-title">
         <span>Our Services</span>
-
         <h2>Powerful Logistics Solutions</h2>
-
-        <p>
-          We connect clients with reliable transport providers for fast and secure logistics operations.
-        </p>
       </div>
 
       <div class="services-grid">
@@ -611,19 +120,19 @@
         <div class="service-card">
           <div class="service-icon">⚡</div>
           <h3>Express Shipping</h3>
-          <p>Same-day and urgent delivery services.</p>
+          <p>Fast same-day logistics solutions.</p>
         </div>
 
         <div class="service-card">
           <div class="service-icon">📦</div>
           <h3>Package Handling</h3>
-          <p>Secure package management with tracking.</p>
+          <p>Secure package management with live tracking.</p>
         </div>
 
         <div class="service-card">
           <div class="service-icon">🛡️</div>
           <h3>Verified Drivers</h3>
-          <p>All drivers go through identity verification.</p>
+          <p>Drivers are verified before onboarding.</p>
         </div>
 
       </div>
@@ -632,244 +141,15 @@
 
   </section>
 
-  <section id="how">
-
+  <footer>
     <div class="container">
-
-      <div class="section-title">
-
-        <span>How It Works</span>
-
-        <h2>Simple Delivery Process</h2>
-
-      </div>
-
-      <div class="steps">
-
-        <div class="step-card">
-          <div class="step-number">01</div>
-          <h3>Create Shipment</h3>
-          <p>Clients submit pickup and delivery information.</p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-number">02</div>
-          <h3>Driver Accepts</h3>
-          <p>Nearby drivers receive and accept requests.</p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-number">03</div>
-          <h3>Track Delivery</h3>
-          <p>Clients monitor shipments in real time.</p>
-        </div>
-
-        <div class="step-card">
-          <div class="step-number">04</div>
-          <h3>Successful Delivery</h3>
-          <p>Shipment gets completed securely.</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section>
-
-    <div class="container">
-
-      <div class="driver-cta">
-
-        <div>
-
-          <span style="color:#ff6b00; text-transform:uppercase; letter-spacing:2px;">
-            Become a Driver
-          </span>
-
-          <h2>Earn Money With Your Vehicle.</h2>
-
-          <p>
-            Join MercX Logistics and start accepting delivery jobs near you.
-          </p>
-
-          <div class="hero-buttons">
-
-            <a href="pages/register.html" class="primary-btn">
-              Register as Driver
-            </a>
-
-            <a href="pages/login.html" class="secondary-btn">
-              Driver Login
-            </a>
-
-          </div>
-
-        </div>
-
-        <div class="earnings-card">
-
-          <h3>Driver Earnings</h3>
-
-          <div class="earning-item">
-            <span>Today's Earnings</span>
-            <strong>₦45,000</strong>
-          </div>
-
-          <div class="earning-item">
-            <span>Completed Deliveries</span>
-            <strong>18</strong>
-          </div>
-
-          <div class="earning-item">
-            <span>Driver Rating</span>
-            <strong>4.9 ★</strong>
-          </div>
-
-          <div class="earning-item" style="border:none;">
-            <span>Pending Requests</span>
-            <strong>7</strong>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="tracking">
-
-    <div class="container">
-
-      <div class="section-title">
-
-        <span>Live Tracking</span>
-
-        <h2>Track Your Shipment</h2>
-
-      </div>
-
-      <div class="tracking-wrapper">
-
-        <div class="tracking-form">
-
-          <input type="text" id="trackingInput" placeholder="Enter Tracking ID">
-
-          <button class="primary-btn" onclick="trackShipment()">
-            Track Now
-          </button>
-
-        </div>
-
-        <div class="tracking-result" id="trackingResult">
-
-          <h3>Shipment Found</h3>
-
-          <p style="margin-top:12px; color:#94a3b8;">
-            Your package is currently in transit to Abuja.
-          </p>
-
-          <div class="progress">
-            <span style="width:82%;"></span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <footer id="contact">
-
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div>
-          <h2 style="margin-bottom:20px;">MercX Logistics</h2>
-
-          <p>
-            Smart logistics marketplace connecting clients with trusted drivers.
-          </p>
-        </div>
-
-        <div>
-
-          <h3 style="margin-bottom:20px;">Quick Links</h3>
-
-          <a href="index.html">Home</a><br>
-          <a href="#services">Services</a><br>
-          <a href="pages/login.html">Login</a><br>
-          <a href="pages/register.html">Register</a>
-
-        </div>
-
-        <div>
-
-          <h3 style="margin-bottom:20px;">Support</h3>
-
-          <p>support@mercx.site</p>
-          <p>+2347040368632</p>
-          <p>Abuja, Nigeria</p>
-
-        </div>
-
-      </div>
-
       <div class="copyright">
         © 2026 MercX Logistics. All rights reserved.
       </div>
-
     </div>
-
   </footer>
 
-  <script>
-
-    function trackShipment(){
-
-      const input = document.getElementById('trackingInput').value;
-      const result = document.getElementById('trackingResult');
-
-      if(input.trim() === ''){
-
-        alert('Please enter tracking ID');
-        return;
-
-      }
-
-      result.style.display = 'block';
-
-    }
-
-    window.addEventListener('scroll', () => {
-
-      const nav = document.querySelector('nav');
-
-      if(window.scrollY > 50){
-
-        nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.25)';
-
-      } else {
-
-        nav.style.boxShadow = 'none';
-
-      }
-
-    });
-
-    window.addEventListener('load', () => {
-
-      document.body.style.opacity = '1';
-
-    });
-
-  </script>
+  <script src="js/app.js"></script>
 
 </body>
 </html>
