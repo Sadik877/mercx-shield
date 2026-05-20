@@ -1,455 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>MercX Vault</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
+  <link rel="stylesheet" href="style.css" />
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
-
-    :root{
-      --bg:#050816;
-      --card:#0d1326;
-      --border:rgba(255,255,255,0.08);
-      --text:#ffffff;
-      --muted:#9ca3af;
-      --primary:#8b5cf6;
-      --primary2:#a855f7;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      font-family:'Space Grotesk',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-
-    .container{
-      width:92%;
-      max-width:1300px;
-      margin:auto;
-    }
-
-    /* BACKGROUND */
-
-    .bg-blur{
-      position:absolute;
-      width:500px;
-      height:500px;
-      border-radius:50%;
-      filter:blur(120px);
-      z-index:-1;
-      opacity:.35;
-    }
-
-    .blur1{
-      background:#7c3aed;
-      top:-120px;
-      left:-120px;
-    }
-
-    .blur2{
-      background:#9333ea;
-      right:-120px;
-      top:300px;
-    }
-
-    /* NAVBAR */
-
-    nav{
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      z-index:999;
-      background:rgba(5,8,22,.75);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid var(--border);
-    }
-
-    .nav-wrapper{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:18px 0;
-    }
-
-    .logo{
-      font-size:2rem;
-      font-weight:800;
-    }
-
-    .logo span{
-      color:var(--primary);
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      gap:30px;
-      list-style:none;
-    }
-
-    .nav-links a{
-      text-decoration:none;
-      color:white;
-      font-weight:500;
-      transition:.3s;
-    }
-
-    .nav-links a:hover{
-      color:var(--primary);
-    }
-
-    .menu-btn{
-      display:none;
-      font-size:2rem;
-      cursor:pointer;
-    }
-
-    .nav-btn{
-      padding:16px 28px;
-      border-radius:18px;
-      background:linear-gradient(135deg,var(--primary),var(--primary2));
-      color:white;
-      text-decoration:none;
-      font-weight:700;
-      box-shadow:0 10px 40px rgba(139,92,246,.35);
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      position:relative;
-      overflow:hidden;
-      padding-top:130px;
-      padding-bottom:80px;
-    }
-
-    .hero-content{
-      width:100%;
-      text-align:center;
-      max-width:950px;
-      margin:auto;
-    }
-
-    .hero-badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:14px 26px;
-      border-radius:999px;
-      border:1px solid rgba(139,92,246,.25);
-      background:rgba(139,92,246,.08);
-      color:#c084fc;
-      margin-bottom:35px;
-      font-size:.95rem;
-    }
-
-    .hero h1{
-      font-size:6rem;
-      line-height:1.05;
-      font-weight:800;
-      margin-bottom:30px;
-    }
-
-    .hero h1 span{
-      background:linear-gradient(to right,#c084fc,#8b5cf6);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .hero p{
-      max-width:760px;
-      margin:auto;
-      color:var(--muted);
-      font-size:1.2rem;
-      line-height:1.9;
-    }
-
-    .hero-buttons{
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      margin-top:45px;
-      flex-wrap:wrap;
-    }
-
-    .primary-btn,
-    .secondary-btn{
-      min-width:260px;
-      padding:22px 34px;
-      border-radius:24px;
-      text-decoration:none;
-      font-weight:700;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      transition:.35s;
-      font-size:1.05rem;
-    }
-
-    .primary-btn{
-      background:linear-gradient(135deg,var(--primary),var(--primary2));
-      color:white;
-      box-shadow:0 15px 50px rgba(139,92,246,.35);
-    }
-
-    .primary-btn:hover{
-      transform:translateY(-5px);
-    }
-
-    .secondary-btn{
-      border:1px solid rgba(139,92,246,.35);
-      color:white;
-      background:rgba(255,255,255,.02);
-    }
-
-    .secondary-btn:hover{
-      background:rgba(139,92,246,.08);
-    }
-
-    /* STATS */
-
-    .stats{
-      margin-top:80px;
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:25px;
-    }
-
-    .stat-card{
-      background:rgba(255,255,255,.03);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:32px;
-      padding:45px 30px;
-      text-align:center;
-      transition:.4s;
-      backdrop-filter:blur(20px);
-    }
-
-    .stat-card:hover{
-      transform:translateY(-8px);
-      border-color:rgba(139,92,246,.4);
-      box-shadow:0 20px 60px rgba(139,92,246,.15);
-    }
-
-    .stat-icon{
-      font-size:2.8rem;
-      margin-bottom:20px;
-    }
-
-    .stat-card h2{
-      font-size:3rem;
-      margin-bottom:10px;
-    }
-
-    .stat-card p{
-      color:var(--muted);
-      font-size:1rem;
-    }
-
-    /* MOBILE */
-
-    @media(max-width:1100px){
-
-      .hero h1{
-        font-size:4.8rem;
-      }
-
-    }
-
-    @media(max-width:768px){
-
-      .nav-links{
-        position:absolute;
-        top:90px;
-        left:0;
-        width:100%;
-        background:#0b1020;
-        flex-direction:column;
-        padding:30px 0;
-        display:none;
-        border-bottom:1px solid rgba(255,255,255,.06);
-      }
-
-      .nav-links.active{
-        display:flex;
-      }
-
-      .menu-btn{
-        display:block;
-      }
-
-      .nav-btn{
-        display:none;
-      }
-
-      .hero{
-        padding-top:120px;
-      }
-
-      .hero-content{
-        text-align:center;
-      }
-
-      .hero h1{
-        font-size:3.5rem;
-      }
-
-      .hero p{
-        font-size:1rem;
-      }
-
-      .hero-buttons{
-        flex-direction:column;
-        align-items:center;
-      }
-
-      .primary-btn,
-      .secondary-btn{
-        width:100%;
-      }
-
-      .stats{
-        grid-template-columns:1fr;
-      }
-
-      .stat-card{
-        padding:35px 25px;
-      }
-
-    }
-
-    @media(max-width:500px){
-
-      .logo{
-        font-size:1.7rem;
-      }
-
-      .hero h1{
-        font-size:2.8rem;
-      }
-
-      .hero-badge{
-        font-size:.82rem;
-        padding:12px 18px;
-      }
-
-      .stat-card h2{
-        font-size:2.3rem;
-      }
-
-    }
-
-  </style>
 </head>
+
 <body>
 
-  <div class="bg-blur blur1"></div>
-  <div class="bg-blur blur2"></div>
+  <!-- LOADER -->
+
+  <div class="loader-wrapper" id="loader">
+
+    <div class="loader"></div>
+
+  </div>
+
+  <!-- BACKGROUND -->
+
+  <div class="bg-blur blur-1"></div>
+
+  <div class="bg-blur blur-2"></div>
 
   <!-- NAVBAR -->
 
   <nav>
 
-    <div class="container nav-wrapper">
+    <div class="container nav-container">
 
       <div class="logo">
         MercX <span>Vault</span>
       </div>
 
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links">
 
-        <li>
-          <a href="#">Home</a>
-        </li>
+        <li><a href="#">Home</a></li>
 
-        <li>
-          <a href="#">Marketplace</a>
-        </li>
+        <li><a href="#">Marketplace</a></li>
 
-        <li>
-          <a href="#">Escrow</a>
-        </li>
+        <li><a href="#">Escrow</a></li>
 
-        <li>
-          <a href="#">Pricing</a>
-        </li>
+        <li><a href="#">Dashboard</a></li>
 
-        <li>
-          <a href="#">Contact</a>
-        </li>
+        <li><a href="#">Contact</a></li>
 
       </ul>
 
-      <a href="#" class="nav-btn">
-        Get Started
-      </a>
+      <div class="nav-actions">
+
+        <a href="#" class="nav-btn">
+          Get Started
+        </a>
+
+      </div>
 
       <div class="menu-btn" id="menuBtn">
+
         ☰
+
       </div>
 
     </div>
 
   </nav>
 
+  <!-- MOBILE MENU -->
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <a href="#">Home</a>
+
+    <a href="#">Marketplace</a>
+
+    <a href="#">Escrow</a>
+
+    <a href="#">Dashboard</a>
+
+    <a href="#">Contact</a>
+
+  </div>
+
   <!-- HERO -->
 
   <section class="hero">
 
-    <div class="container">
+    <div class="container hero-container">
 
       <div class="hero-content">
 
         <div class="hero-badge">
+
           🛡 Trusted Digital Escrow Marketplace
+
         </div>
 
         <h1>
+
           Buy & Sell Digital Assets Safely With
+
           <span>MercX Vault</span>
+
         </h1>
 
         <p>
-          MercX Vault protects buyers and sellers using secure escrow technology,
-          instant transactions, premium marketplace protection and verified trading systems.
+
+          MercX Vault protects buyers and sellers using secure escrow technology, instant transactions, and premium marketplace protection.
+
         </p>
 
         <div class="hero-buttons">
 
           <a href="#" class="primary-btn">
+
             🚀 Start Trading
+
           </a>
 
           <a href="#" class="secondary-btn">
+
             🛡 Explore Platform
+
           </a>
 
         </div>
 
         <!-- STATS -->
 
-        <div class="stats">
+        <div class="stats-grid">
 
           <div class="stat-card">
 
@@ -457,11 +147,9 @@
               👥
             </div>
 
-            <h2>12K+</h2>
+            <h3>12K+</h3>
 
-            <p>
-              Active Users
-            </p>
+            <p>Active Users</p>
 
           </div>
 
@@ -471,11 +159,9 @@
               🛡
             </div>
 
-            <h2>₦120M+</h2>
+            <h3>₦120M+</h3>
 
-            <p>
-              Protected Trades
-            </p>
+            <p>Protected Trades</p>
 
           </div>
 
@@ -485,11 +171,9 @@
               🔒
             </div>
 
-            <h2>99.9%</h2>
+            <h3>99.9%</h3>
 
-            <p>
-              Secure Payments
-            </p>
+            <p>Secure Payments</p>
 
           </div>
 
@@ -501,18 +185,228 @@
 
   </section>
 
-  <script>
+  <!-- MARKETPLACE -->
 
-    const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
+  <section class="marketplace">
 
-    menuBtn.addEventListener('click', () => {
+    <div class="container">
 
-      navLinks.classList.toggle('active');
+      <div class="section-header">
 
-    });
+        <span class="section-badge">
+          🔥 Trending Marketplace
+        </span>
 
-  </script>
+        <h2>
+          Buy Premium Digital Assets
+        </h2>
+
+        <p>
+          Explore verified accounts, channels, pages, logs and digital products securely with MercX Vault escrow protection.
+        </p>
+
+      </div>
+
+      <!-- FILTERS -->
+
+      <div class="market-filters">
+
+        <button class="filter active">
+          All
+        </button>
+
+        <button class="filter">
+          TikTok
+        </button>
+
+        <button class="filter">
+          Telegram
+        </button>
+
+        <button class="filter">
+          Instagram
+        </button>
+
+        <button class="filter">
+          Gaming
+        </button>
+
+        <button class="filter">
+          Logs
+        </button>
+
+      </div>
+
+      <!-- GRID -->
+
+      <div class="market-grid">
+
+        <!-- CARD -->
+
+        <div class="market-card">
+
+          <div class="market-top">
+
+            <span class="verified">
+              VERIFIED
+            </span>
+
+            <span class="price">
+              $450
+            </span>
+
+          </div>
+
+          <h3>
+            TikTok Account • 120K Followers
+          </h3>
+
+          <p>
+            High engagement USA audience with monetization enabled.
+          </p>
+
+          <div class="market-meta">
+
+            <span>
+              ⭐ 4.9
+            </span>
+
+            <span>
+              👤 @mrxseller
+            </span>
+
+          </div>
+
+          <a href="#" class="buy-btn">
+            Buy Now
+          </a>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="market-card">
+
+          <div class="market-top">
+
+            <span class="verified">
+              VERIFIED
+            </span>
+
+            <span class="price">
+              $1200
+            </span>
+
+          </div>
+
+          <h3>
+            Telegram Channel • 80K Members
+          </h3>
+
+          <p>
+            Crypto niche audience with active engagement and premium reach.
+          </p>
+
+          <div class="market-meta">
+
+            <span>
+              ⭐ 5.0
+            </span>
+
+            <span>
+              👤 @vaultseller
+            </span>
+
+          </div>
+
+          <a href="#" class="buy-btn">
+            Buy Now
+          </a>
+
+        </div>
+
+        <!-- CARD -->
+
+        <div class="market-card">
+
+          <div class="market-top">
+
+            <span class="verified">
+              VERIFIED
+            </span>
+
+            <span class="price">
+              $300
+            </span>
+
+          </div>
+
+          <h3>
+            Instagram Page • 45K Followers
+          </h3>
+
+          <p>
+            Fashion niche account with real followers and monetization potential.
+          </p>
+
+          <div class="market-meta">
+
+            <span>
+              ⭐ 4.8
+            </span>
+
+            <span>
+              👤 @securetrade
+            </span>
+
+          </div>
+
+          <a href="#" class="buy-btn">
+            Buy Now
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container footer-container">
+
+      <h2>
+        MercX Vault
+      </h2>
+
+      <p>
+        Premium digital escrow marketplace platform.
+      </p>
+
+      <div class="footer-links">
+
+        <a href="#">Privacy</a>
+
+        <a href="#">Terms</a>
+
+        <a href="#">Support</a>
+
+      </div>
+
+      <small>
+        © 2026 MercX Vault. All rights reserved.
+      </small>
+
+    </div>
+
+  </footer>
+
+  <script src="app.js"></script>
 
 </body>
+
 </html>
