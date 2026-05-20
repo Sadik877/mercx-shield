@@ -1,60 +1,20 @@
-// REGISTER
+// LOADER
 
-const registerForm = document.querySelector('#registerForm');
+window.addEventListener('load', () => {
 
-if(registerForm){
+  const loader = document.getElementById('loader');
 
-  registerForm.addEventListener('submit', async (e) => {
+  if(loader){
 
-    e.preventDefault();
+    loader.classList.add('loader-hidden');
 
-    const fullname = document.querySelector('#fullname').value;
-    const email = document.querySelector('#email').value;
-    const phone = document.querySelector('#phone').value;
-    const role = document.querySelector('#role').value;
-    const password = document.querySelector('#password').value;
+  }
 
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password
-    });
-
-    if(error){
-      alert(error.message);
-      return;
-    }
-
-    const user = data.user;
-
-    const { error: insertError } = await supabase
-      .from('users')
-      .insert([
-        {
-          id: user.id,
-          fullname,
-          email,
-          phone,
-          role
-        }
-      ]);
-
-    if(insertError){
-      alert(insertError.message);
-      return;
-    }
-
-    alert('Account created successfully');
-
-    window.location.href = 'login.html';
-
-  });
-
-}
-
+});
 
 // LOGIN
 
-const loginForm = document.querySelector('#loginForm');
+const loginForm = document.getElementById('loginForm');
 
 if(loginForm){
 
@@ -62,39 +22,86 @@ if(loginForm){
 
     e.preventDefault();
 
-    const email = document.querySelector('#loginEmail').value;
-    const password = document.querySelector('#loginPassword').value;
+    const email = document.getElementById('loginEmail').value;
 
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
+    const password = document.getElementById('loginPassword').value;
 
-    if(error){
-      alert(error.message);
-      return;
-    }
+    const button = document.querySelector('.auth-btn');
 
-    const userId = data.user.id;
+    button.innerHTML = 'Logging in...';
 
-    const { data: profile, error: profileError } = await supabase
-      .from('users')
-      .select('*')
-      .eq('id', userId)
-      .single();
+    button.disabled = true;
 
-    if(profileError){
-      alert(profileError.message);
-      return;
-    }
+    try{
 
-    if(profile.role === 'driver'){
+      const { data, error } = await supabase.auth.signInWithPassword({
 
-      window.location.href = 'driver-dashboard.html';
+        email,
+        password
 
-    } else {
+      });
 
-      window.location.href = 'client-dashboard.html';
+      if(error){
+
+        alert(error.message);
+
+        button.innerHTML = 'Login Now';
+
+        button.disabled = false;
+
+        return;
+
+      }
+
+      // GET USER PROFILE
+
+      const userId = data.user.id;
+
+      const { data: profile, error: profileError } = await supabase
+
+        .from('users')
+
+        .select('*')
+
+        .eq('id', userId)
+
+        .single();
+
+      if(profileError){
+
+        alert(profileError.message);
+
+        button.innerHTML = 'Login Now';
+
+        button.disabled = false;
+
+        return;
+
+      }
+
+      // SAVE USER
+
+      localStorage.setItem(
+
+        'mercx_user',
+
+        JSON.stringify(profile)
+
+      );
+
+      // REDIRECT
+
+      window.location.href = 'dashboard.html';
+
+    } catch(err){
+
+      alert('Something went wrong.');
+
+      console.log(err);
+
+      button.innerHTML = 'Login Now';
+
+      button.disabled = false;
 
     }
 
@@ -102,6 +109,106 @@ if(loginForm){
 
 }
 
+// REGISTER
+
+const registerForm = document.getElementById('registerForm');
+
+if(registerForm){
+
+  registerForm.addEventListener('submit', async (e) => {
+
+    e.preventDefault();
+
+    const fullname = document.getElementById('fullname').value;
+
+    const email = document.getElementById('email').value;
+
+    const phone = document.getElementById('phone').value;
+
+    const role = document.getElementById('role').value;
+
+    const password = document.getElementById('password').value;
+
+    const button = document.querySelector('.auth-btn');
+
+    button.innerHTML = 'Creating Account...';
+
+    button.disabled = true;
+
+    try{
+
+      // CREATE USER
+
+      const { data, error } = await supabase.auth.signUp({
+
+        email,
+        password
+
+      });
+
+      if(error){
+
+        alert(error.message);
+
+        button.innerHTML = 'Create Account';
+
+        button.disabled = false;
+
+        return;
+
+      }
+
+      // INSERT PROFILE
+
+      const { error: insertError } = await supabase
+
+        .from('users')
+
+        .insert([
+
+          {
+
+            id:data.user.id,
+            fullname,
+            email,
+            phone,
+            role
+
+          }
+
+        ]);
+
+      if(insertError){
+
+        alert(insertError.message);
+
+        button.innerHTML = 'Create Account';
+
+        button.disabled = false;
+
+        return;
+
+      }
+
+      alert('Account created successfully');
+
+      window.location.href = 'login.html';
+
+    } catch(err){
+
+      console.log(err);
+
+      alert('Registration failed');
+
+      button.innerHTML = 'Create Account';
+
+      button.disabled = false;
+
+    }
+
+  });
+
+}
 
 // LOGOUT
 
@@ -109,6 +216,8 @@ async function logout(){
 
   await supabase.auth.signOut();
 
-  window.location.href = '../index.html';
+  localStorage.removeItem('mercx_user');
+
+  window.location.href = 'login.html';
 
 }
