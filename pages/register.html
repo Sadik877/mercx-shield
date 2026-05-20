@@ -1,56 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>MercX Register</title>
 
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+
   <link rel="stylesheet" href="../css/auth.css">
+
 </head>
+
 <body>
 
-  <div class="auth-container">
+  <!-- LOADER -->
 
-    <form class="auth-form" id="registerForm">
+  <div class="loader-wrapper" id="loader">
 
-      <h1>Create Account</h1>
-
-      <input type="text" id="fullname" placeholder="Full Name" required>
-
-      <input type="email" id="email" placeholder="Email" required>
-
-      <input type="text" id="phone" placeholder="Phone Number" required>
-
-      <select id="role">
-
-        <option value="client">
-          Client
-        </option>
-
-        <option value="driver">
-          Driver
-        </option>
-
-      </select>
-
-      <input type="password" id="password" placeholder="Password" required>
-
-      <button type="submit">
-        Create Account
-      </button>
-
-      <p>
-        Already have account?
-        <a href="login.html">Login</a>
-      </p>
-
-    </form>
+    <div class="loader"></div>
 
   </div>
 
+  <!-- BLUR -->
+
+  <div class="bg-blur blur-1"></div>
+
+  <div class="bg-blur blur-2"></div>
+
+  <!-- WRAPPER -->
+
+  <div class="auth-wrapper">
+
+    <!-- LEFT -->
+
+    <div class="auth-left">
+
+      <div class="logo">
+
+        MercX <span>Vault</span>
+
+      </div>
+
+      <h1>
+
+        Start Trading Safely 🚀
+
+      </h1>
+
+      <p>
+
+        Create your MercX account to buy, sell, and protect digital asset transactions using our premium escrow marketplace.
+
+      </p>
+
+      <div class="auth-features">
+
+        <div class="feature-card">
+
+          <span>🛡</span>
+
+          <div>
+
+            <h3>Escrow Protection</h3>
+
+            <p>
+              Safe transactions for buyers and sellers.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="feature-card">
+
+          <span>💰</span>
+
+          <div>
+
+            <h3>Wallet System</h3>
+
+            <p>
+              Deposit, withdraw and manage balances.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="feature-card">
+
+          <span>⚡</span>
+
+          <div>
+
+            <h3>Instant Marketplace</h3>
+
+            <p>
+              Buy & sell premium digital products fast.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="auth-right">
+
+      <form id="registerForm" class="auth-form">
+
+        <div class="form-top">
+
+          <h2>
+            Create Account
+          </h2>
+
+          <p>
+            Join MercX premium marketplace platform.
+          </p>
+
+        </div>
+
+        <!-- FULL NAME -->
+
+        <div class="input-group">
+
+          <label>Full Name</label>
+
+          <input 
+            type="text"
+            id="fullname"
+            placeholder="Enter your full name"
+            required
+          >
+
+        </div>
+
+        <!-- EMAIL -->
+
+        <div class="input-group">
+
+          <label>Email Address</label>
+
+          <input 
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          >
+
+        </div>
+
+        <!-- PHONE -->
+
+        <div class="input-group">
+
+          <label>Phone Number</label>
+
+          <input 
+            type="text"
+            id="phone"
+            placeholder="Enter your phone number"
+            required
+          >
+
+        </div>
+
+        <!-- ROLE -->
+
+        <div class="input-group">
+
+          <label>Account Type</label>
+
+          <select id="role" required>
+
+            <option value="buyer">
+
+              Buyer
+
+            </option>
+
+            <option value="seller">
+
+              Seller
+
+            </option>
+
+          </select>
+
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="input-group">
+
+          <label>Password</label>
+
+          <input 
+            type="password"
+            id="password"
+            placeholder="Create password"
+            required
+          >
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button type="submit" class="auth-btn">
+
+          Create Account
+
+        </button>
+
+        <!-- DIVIDER -->
+
+        <div class="divider">
+
+          <span>OR</span>
+
+        </div>
+
+        <!-- GOOGLE -->
+
+        <button type="button" class="google-btn">
+
+          <img 
+            src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
+            alt=""
+          >
+
+          Continue With Google
+
+        </button>
+
+        <!-- FOOTER -->
+
+        <div class="auth-footer">
+
+          Already have an account?
+
+          <a href="login.html">
+
+            Login Now
+
+          </a>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- SUPABASE -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
   <script src="../js/supabase.js"></script>
+
   <script src="../js/auth.js"></script>
 
 </body>
+
 </html>
