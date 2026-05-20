@@ -1,40 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>MercX Login</title>
 
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+
   <link rel="stylesheet" href="../css/auth.css">
+
 </head>
+
 <body>
 
-  <div class="auth-container">
+  <!-- LOADING SCREEN -->
 
-    <form class="auth-form" id="loginForm">
+  <div class="loader-wrapper" id="loader">
 
-      <h1>Login</h1>
-
-      <input type="email" id="loginEmail" placeholder="Email" required>
-
-      <input type="password" id="loginPassword" placeholder="Password" required>
-
-      <button type="submit">
-        Login
-      </button>
-
-      <p>
-        Don't have account?
-        <a href="register.html">Register</a>
-      </p>
-
-    </form>
+    <div class="loader"></div>
 
   </div>
 
+  <!-- BACKGROUND BLUR -->
+
+  <div class="bg-blur blur-1"></div>
+
+  <div class="bg-blur blur-2"></div>
+
+  <!-- LOGIN CONTAINER -->
+
+  <div class="auth-wrapper">
+
+    <!-- LEFT SIDE -->
+
+    <div class="auth-left">
+
+      <div class="logo">
+
+        MercX <span>Vault</span>
+
+      </div>
+
+      <h1>
+
+        Welcome Back 👋
+
+      </h1>
+
+      <p>
+
+        Login to access your marketplace dashboard, escrow orders, wallet balance, and secure transactions.
+
+      </p>
+
+      <div class="auth-features">
+
+        <div class="feature-card">
+
+          <span>🛡</span>
+
+          <div>
+            <h3>Secure Escrow</h3>
+            <p>Protected buyer & seller transactions.</p>
+          </div>
+
+        </div>
+
+        <div class="feature-card">
+
+          <span>⚡</span>
+
+          <div>
+            <h3>Instant Trading</h3>
+            <p>Fast marketplace delivery system.</p>
+          </div>
+
+        </div>
+
+        <div class="feature-card">
+
+          <span>💬</span>
+
+          <div>
+            <h3>Live Chat</h3>
+            <p>Direct communication with sellers.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="auth-right">
+
+      <form id="loginForm" class="auth-form">
+
+        <div class="form-top">
+
+          <h2>
+            Login Account
+          </h2>
+
+          <p>
+            Continue your secure trading journey.
+          </p>
+
+        </div>
+
+        <!-- EMAIL -->
+
+        <div class="input-group">
+
+          <label>Email Address</label>
+
+          <input 
+            type="email"
+            id="loginEmail"
+            placeholder="Enter your email"
+            required
+          >
+
+        </div>
+
+        <!-- PASSWORD -->
+
+        <div class="input-group">
+
+          <label>Password</label>
+
+          <input 
+            type="password"
+            id="loginPassword"
+            placeholder="Enter your password"
+            required
+          >
+
+        </div>
+
+        <!-- OPTIONS -->
+
+        <div class="form-options">
+
+          <label class="remember">
+
+            <input type="checkbox">
+
+            Remember me
+
+          </label>
+
+          <a href="#">
+            Forgot Password?
+          </a>
+
+        </div>
+
+        <!-- BUTTON -->
+
+        <button type="submit" class="auth-btn">
+
+          Login Now
+
+        </button>
+
+        <!-- DIVIDER -->
+
+        <div class="divider">
+
+          <span>OR</span>
+
+        </div>
+
+        <!-- GOOGLE -->
+
+        <button type="button" class="google-btn">
+
+          <img 
+            src="https://cdn-icons-png.flaticon.com/512/281/281764.png"
+            alt=""
+          >
+
+          Continue With Google
+
+        </button>
+
+        <!-- FOOTER -->
+
+        <div class="auth-footer">
+
+          Don’t have an account?
+
+          <a href="register.html">
+
+            Create Account
+
+          </a>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <!-- SUPABASE -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
   <script src="../js/supabase.js"></script>
+
   <script src="../js/auth.js"></script>
 
 </body>
-  </html>
+
+</html>
