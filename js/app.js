@@ -32,6 +32,7 @@ nav.style.boxShadow = 'none';
 }
 
 });
+
 /* MOBILE MENU */
 
 const menuToggle =
